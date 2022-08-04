@@ -4,5 +4,5 @@
   "background_color": "rgba(244,228,228,0.98)",
   "display": "standalone",
   "scope": "/",
-  "start_url": "valtreb.herokuapps.com"
+  "start_url": "tayzer-podcast-sync.herokuapps.com"
 }

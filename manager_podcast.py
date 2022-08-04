@@ -30,7 +30,7 @@ HEADERS = {
 CHECK_TIME = 86400  # 24 hours
 
 def connect_database():
-    DATABASE_URL = os.environ['DATABASE_URL']
+    DATABASE_URL = os.environ.get('DATABASE_URL')
     return psycopg2.connect(DATABASE_URL, sslmode='require')
 
 
@@ -86,7 +86,7 @@ def create_account(login, password, pseudo = ""):
 
     cursor.execute("""SELECT count(id)
                       FROM account""")
-    if(cursor.fetchone()[0] <= int(os.environ['NUMBER_MAX_USER'])):
+    if(cursor.fetchone()[0] <= int(os.environ.get('NUMBER_MAX_USER', 5))):
       
         cursor.execute("""SELECT id 
                         FROM account 

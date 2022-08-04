@@ -30,7 +30,7 @@ configuration_flask = {
 
 lock = threading.Lock()
 app = Flask(__name__)
-app.secret_key = os.environ['KEY']
+app.secret_key = os.environ.get('KEY', '')
 app.config.from_mapping(configuration_flask)
 cache = Cache(app)
 
@@ -91,7 +91,7 @@ def get_search_podcast(user_id):
         print("name : "+str(name))
     if(name is None):
         return Response(json.dumps({'error': 'missing parameter'}), status=400, mimetype='application/json')
-    elif os.environ['PODCASTING_INDEX_KEY'] in (None, ''):
+    elif os.environ.get('PODCASTING_INDEX_KEY', '') in (None, ''):
         return Response(json.dumps({'error': 'missing API KEY'}), status=401, mimetype='application/json')
     else:
         return Response(json.dumps(api_podcasting_index.search_22(name)), status=200, mimetype='application/json')
