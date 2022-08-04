@@ -12,7 +12,7 @@ def search_podcats(name):
     # we'll need the unix time
     epoch_time = int(time.time())
     # our hash here is the api key + secret + time 
-    data_to_hash = os.environ.get('PODCASTING_INDEX_KEY', '')+ os.environ.get('PODCASTING_INDEX_SECRET'], '')+ str(epoch_time)
+    data_to_hash = os.environ.get('PODCASTING_INDEX_KEY', '')+ os.environ.get('PODCASTING_INDEX_SECRET', '')+ str(epoch_time)
     # which is then sha-1'd
     sha_1 = hashlib.sha1(data_to_hash.encode()).hexdigest()
     headers = {
