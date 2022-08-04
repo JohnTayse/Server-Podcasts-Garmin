@@ -32,7 +32,7 @@
     <header class="container col full debut-cont gap10">
         <div class="container row one debut-cont">
             <a class="container clickable col  vignette rigid " href="/">
-                <div class="pastille debut rigid"  alt="Retour Liste" ><i class="fas fa-arrow-circle-left"></i></div>
+                <div class="pastille debut rigid"  alt="Back to list" ><i class="fas fa-arrow-circle-left"></i></div>
             </a>
             {% if podcast.image != None %}
             <img class="vignette rigid " src="{{podcast.image}}" />
@@ -51,17 +51,17 @@
         <div  class="container row full reparti" >
             <div class="container col debut">
                 <div class="clickable  button" 
-                        alt="Marquer TOUS comme lus"
+                        alt="Mark all as read"
                         onclick="allRead( {{ podcast.id }} )">
-                     TOUS lus
+                     All read
                 </div>
             </div>
 
             <div class="container col debut">
                 <div class=" button  clickable " 
-                        alt="Marquer TOUS comme NON lus"
+                        alt="Mark all as unread"
                         onclick="noneRead({{ podcast.id }} )" >
-                     AUCUN lu
+                     All unread
                 </div>
             </div>
             <div class="spacer"  > </div>
@@ -69,27 +69,27 @@
             
             <div class="container col fin">
                 <div class="clickable  button" 
-                        alt="Ne RIEN synchroniser"
+                        alt="Sync nothing"
                         onclick="noneSync( {{ podcast.id }} )"   >
-                    AUCUNE synchro
+                    Snyced none
                 </div>
             </div>
 
             <div class="container col fin">
                 <div class=" clickable  button " 
-                        alt="TOUT synchroniser"
+                        alt="Sync all"
                         onclick="allSync( {{ podcast.id }} )"   > 
-                    TOUT synchro
+                    Synced all
                 </div>
             </div>
         </div>
         {% block count %}
         <div  class="container row reparti gap10 full" >
             <div class="spacer"  > </div>
-            <div class="debut recap" ><span id="readed">{{ podcast.counts.readeds}}</span>  / <span class="total">{{ podcast.counts.total}}</span> déjà lus </div>
+            <div class="debut recap" ><span id="readed">{{ podcast.counts.readeds}}</span>  / <span class="total">{{ podcast.counts.total}}</span> already read </div>
             <div class="spacer"  > </div>
             <div class="spacer"  > </div>
-            <div class="fin   recap" ><span id="readed">{{ podcast.counts.synceds}}</span>  / <span class="total">{{ podcast.counts.total}}</span> à synchroniser</div>
+            <div class="fin   recap" ><span id="readed">{{ podcast.counts.synceds}}</span>  / <span class="total">{{ podcast.counts.total}}</span> to sync</div>
             <div class="spacer"  > </div>
         </div> 
         {% endblock %}
@@ -104,14 +104,14 @@
         <article class="container col cadre survol elastic gap0" id="{{episode.id}}" >
             <h2 class="title">({{ episode.position }}) - {{ episode.title }}</h2>
             <p class="container row" >
-                <span> Durée : </span>
+                <span> Duration : </span>
                 <span class="spacer mini" ></span>
                 <span class="dur">{{episode.duration }}</span>
             {% if episode.pub_date_ms != "0" %}
                 <span class="spacer mini"></span>
                 <span> - </span>
                 <span class="spacer mini"></span>
-                <span > Publié le :  </span>
+                <span > Published on :  </span>
                 <span class="spacer mini" ></span>
                 <span class="pub">{{ episode.pub_date_ms }}</script></span>
             {% endif %}
@@ -133,12 +133,12 @@
                     <p class="clickable toggle checked read"
                      onclick="toggle( 'r', '{{ episode.id }}' )"
                      id="r{{ episode.id }}"
-                    ><span><i class="far fa-check-square"></i></span> Lu &nbsp;&nbsp; </p>
+                    ><span><i class="far fa-check-square"></i></span> read &nbsp;&nbsp; </p>
                 {% else %}
                     <p class="clickable toggle unchecked read"
                        onclick="toggle( 'r', '{{ episode.id }}') "
                        id="r{{ episode.id }}"
-                       ><span><i class="far fa-square"></i></span> Non lu</p>
+                       ><span><i class="far fa-square"></i></span> not read</p>
                 {% endif %}
                 </div>
 
@@ -149,12 +149,12 @@
                     <p class="clickable toggle checked synced"  
                        onclick="toggle( 's', '{{ episode.id }}' )" 
                        id="s{{ episode.id }}"
-                       ><span><i class="far fa-check-square"></i></span> A synchroniser &nbsp;&nbsp; </p>
+                       ><span><i class="far fa-check-square"></i></span> synced &nbsp;&nbsp; </p>
                 {% else %}
                     <p class="clickable toggle unchecked synced "  
                        onclick="toggle( 's','{{ episode.id }}' )"  
                        id="s{{ episode.id }}"
-                    ><span><i class="far fa-square"></i></span > Ne PAS synchroniser </p>
+                    ><span><i class="far fa-square"></i></span > not synced </p>
                 {% endif %}
                 </div>
             </div>

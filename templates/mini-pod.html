@@ -20,7 +20,7 @@
 <header class="container col full debut-cont gap10">
     <div class="container row full reparti debut-cont">
         <a class="container clickable col  vignette rigid " href="/">
-            <div class="pastille debut rigid"  alt="Retour Liste" ><i class="fas fa-arrow-circle-left"></i></div>
+            <div class="pastille debut rigid"  alt="Back to list" ><i class="fas fa-arrow-circle-left"></i></div>
         </a>
         {% if podcast.image != None %}
         <img class="vignette rigid " src="{{podcast.image}}" />
@@ -39,17 +39,17 @@
     <div  class="container row full reparti" >
         <div class="container col debut">
             <div class="clickable  button" 
-                    alt="Marquer TOUS lus"
+                    alt="Mark all as read"
                     onclick="allRead( {{ podcast.id }} )">
-                 TOUS lus
+                 All Read
             </div>
         </div>
 
         <div class="container col debut">
             <div class=" button  clickable " 
-                    alt="Marquer AUCUN lu"
+                    alt="Mark all as unread"
                     onclick="noneRead({{ podcast.id }} )" >
-                 AUCUN lu
+                 All Unread
             </div>
         </div>
         <div class="spacer"  > </div>
@@ -57,27 +57,27 @@
         
         <div class="container col fin">
             <div class="clickable  button" 
-                    alt="Ne RIEN synchroniser"
+                    alt="Sync nothing"
                     onclick="noneSync( {{ podcast.id }} )"   >
-                AUCUNE synchro
+                Synced none
             </div>
         </div>
 
         <div class="container col fin">
             <div class=" clickable  button " 
-                    alt="TOUT synchroniser"
+                    alt="Sync all"
                     onclick="allSync( {{ podcast.id }} )"   > 
-                TOUT synchro
+                Sync all
             </div>
         </div>
     </div>
     {% block count %}
     <div  class="container row reparti gap10 full" >
         <div class="spacer"  > </div>
-        <div class="debut recap" ><span id="readed">{{ podcast.counts.readeds}}</span>  / <span class="total">{{ podcast.counts.total}}</span> déjà lus </div>
+        <div class="debut recap" ><span id="readed">{{ podcast.counts.readeds}}</span>  / <span class="total">{{ podcast.counts.total}}</span> already read </div>
         <div class="spacer"  > </div>
         <div class="spacer"  > </div>
-        <div class="fin   recap" ><span id="readed">{{ podcast.counts.synceds}}</span>  / <span class="total">{{ podcast.counts.total}}</span> à synchroniser</div>
+        <div class="fin   recap" ><span id="readed">{{ podcast.counts.synceds}}</span>  / <span class="total">{{ podcast.counts.total}}</span> to sync</div>
         <div class="spacer"  > </div>
     </div> 
     {% endblock %}
@@ -103,11 +103,11 @@
                 {% if episode.readed == 1 %}
                     <p class="  read"
                      id="read_{{ episode.id }}"
-                    ><span><i class="far fa-check-square fa-2x"></i></span> Lu  &nbsp; &nbsp; </p>
+                    ><span><i class="far fa-check-square fa-2x"></i></span> read  &nbsp; &nbsp; </p>
                 {% else %}
                     <p class="  read"
                        id="read_{{ episode.id }}"
-                       ><span><i class="far fa-square "></i></span> Non lu </p>
+                       ><span><i class="far fa-square "></i></span> not read </p>
                 {% endif %}
                 </div>
 
@@ -117,11 +117,11 @@
                 {% if episode.sync_watch == 1 %}
                     <p class="toggle checked synced"  
                        id="sync_{{ episode.id }}"
-                       ><span><i class="far fa-check-square fa-2x"></i></span> A synchroniser  &nbsp; &nbsp; </p>
+                       ><span><i class="far fa-check-square fa-2x"></i></span> synced  &nbsp; &nbsp; </p>
                 {% else %}
                     <p class="toggle unchecked synced "  
                        id="sync_{{ episode.id }}"
-                    ><span><i class="far fa-square"></i></span > Ne pas synchroniser </p>
+                    ><span><i class="far fa-square"></i></span > not synced </p>
                 {% endif %}
                 </div>
             </div>

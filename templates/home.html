@@ -1,47 +1,47 @@
 {% extends 'index.html' %}
 
-{% block title %} - Abonnements{% endblock %}
+{% block title %} - Subscriptions{% endblock %}
 
 {% block body %}
 <div id="user" class="full container row fin fin-cont end-cont" >
     
 {% if user == "" %}
     <div >
-        <a href="/login"><i class="far fa-user"></i> Connectez-vous </a>
+        <a href="/login"><i class="far fa-user"></i> Login </a>
     </div>
 {% else %}
     <div class=" rigid" ><i class="fas fa-user"></i> {{user}} </div>
     <div class="spacer" ></div>
-    <a  alt="Se  déconnecter" href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+    <a  alt="Logout" href="/logout"><i class="fas fa-sign-out-alt"></i></a>
 {% endif %}
 </div>
 {% if podcasts != [] %}
     {% if podcasts[0].user_synceds > 0 %}
-    <div class="fin info">{{ podcasts[0].user_synceds }} épisodes seront synchronisés sur la montre</div>
+    <div class="fin info">{{ podcasts[0].user_synceds }} episodes will be synced to the watch</div>
     {% endif %}
 {% endif %}
 
 <header class="container row one debut millieu-cont ">
     <img class="pastille rigid milieu" src="/static/pods3.png" />
     <div class="spacer" ></div>
-    <h1 class="title centre " >Liste des podcasts</h1>
+    <h1 class="title centre " >List of podcasts</h1>
     <div class="spacer" ></div>
     <article  class="container clickable col vignette debut article" onclick="refresh()"   >
-        <div class="pastille milieu debut rigid"  alt="Mise à jour des épisodes"  ><i class="fas fa-sync"></i></div>
+        <div class="pastille milieu debut rigid"  alt="Episodes update"  ><i class="fas fa-sync"></i></div>
     </article>
     <a class="container col vignette article " 
         href="/podcast/add" 
         ><div class="pastille milieu debut rigid " 
-        alt="Abonnement à UN podcast par RSS"
+        alt="Subscribe to a podcast by RSS"
         ><i class="fas fa-plus-circle"></i></div></a>
     <a class="container col vignette article  "
         href="/podcasts/opml"
         ><div class="pastille milieu debut rigid"
-                alt="Abonnement multiple via OPML"
+                alt="subscribe to multiple podcasts via OPML"
             ><i class="fas fa-folder-plus"></i></div></a>
     <div class="container col vignette article clickable "  
         ><div  class="pastille milieu debut rigid"
-            alt="Export OPML de vos abonnements"
+            alt="Export OPML of your subscriptions"
         ><i id="export" class=" clickable fas fa-solid fa-download"></i></div></div>
 </header>
 <div class="spacer large" ></div>
@@ -60,12 +60,12 @@
             {% endif %}
             
             {% if podcast.counts.synceds > 49  %}
-            <div  class="tosync" alt="{{podcast.counts.synceds}} épisodes à synchroniser">
+            <div  class="tosync" alt="{{podcast.counts.synceds}} episodes to sync">
                 <p class="" >49+</p>
             </div>
             {% else %}
                 {% if podcast.counts.synceds > 0 %}
-            <div  class="tosync" alt="{{podcast.counts.synceds}} épisodes à synchroniser" >
+            <div  class="tosync" alt="{{podcast.counts.synceds}} episodes to sync" >
                 <p class="" >{{podcast.counts.synceds}}</p>
             </div>
                 {% endif %}
